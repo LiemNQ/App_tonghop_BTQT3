@@ -39,7 +39,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Xoay tra phải đề chuyển bài hát"
+        android:text="Xoay trái phải đề chuyển bài hát"
         android:textColor="#666680"
         android:textSize="13sp"
         android:gravity="center"
