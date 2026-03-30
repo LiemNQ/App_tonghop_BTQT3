@@ -4,26 +4,77 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="#FFFFFF">
+    android:background="#0D0D0D"
+    android:paddingStart="36dp"
+    android:paddingEnd="36dp">
 
+    <!-- Logo / Icon vòng tròn -->
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginBottom="10dp"
-        android:gravity="center" android:text="App bài tập quá trình 3"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:gravity="center"
+        android:text="★"
+        android:textColor="#E8FF4D"
+        android:textSize="48sp"
+        android:background="#1A1A1A"
+        android:layout_marginBottom="28dp" />
 
+    <!-- Tên app -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Loading..." android:textSize="20sp"
-        android:textStyle="bold" />
+        android:text="Bài Tập"
+        android:textColor="#FFFFFF"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:letterSpacing="0.05"
+        android:layout_marginBottom="4dp" />
 
+    <!-- Subtitle -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quá trình 3"
+        android:textColor="#444444"
+        android:textSize="14sp"
+        android:letterSpacing="0.2"
+        android:layout_marginBottom="56dp" />
+
+    <!-- Accent line -->
+    <View
+        android:layout_width="48dp"
+        android:layout_height="2dp"
+        android:background="#E8FF4D"
+        android:layout_marginBottom="56dp" />
+
+    <!-- Loading label -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đang tải..."
+        android:textColor="#555555"
+        android:textSize="13sp"
+        android:letterSpacing="0.15"
+        android:layout_marginBottom="16dp" />
+
+    <!-- ProgressBar -->
     <ProgressBar
         android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:indeterminate="true"
+        android:progressTint="#E8FF4D"
+        android:indeterminateTint="#E8FF4D"
+        android:progressBackgroundTint="#1A1A1A" />
+
+    <!-- Version -->
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp" />
+        android:text="v1.0.0"
+        android:textColor="#2A2A2A"
+        android:textSize="11sp"
+        android:layout_marginTop="80dp" />
 
 </LinearLayout>

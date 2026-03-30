@@ -2,85 +2,122 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#0A0A0F"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="24dp">
+    android:paddingStart="28dp"
+    android:paddingEnd="28dp"
+    android:paddingTop="40dp"
+    android:paddingBottom="40dp">
 
+    <!-- Album Art Circle -->
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lắc điện thoại hoặc dùng nút\nđể chuyển bài"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="30dp" />
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:gravity="center"
+        android:text="♪"
+        android:textColor="#D4537E"
+        android:textSize="80sp"
+        android:background="#1A1A2E"
+        android:layout_marginBottom="32dp" />
 
+    <!-- Song Name -->
     <TextView
         android:id="@+id/tvSongName"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Đang phát: ..."
-        android:textColor="#E91E63"
+        android:text="Đang phát..."
+        android:textColor="#FFFFFF"
         android:textSize="22sp"
-        android:textStyle="italic"
-        android:layout_marginBottom="20dp" />
+        android:textStyle="bold"
+        android:gravity="center"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:layout_marginBottom="6dp" />
 
+    <!-- Hint -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Xoay tra phải đề chuyển bài hát"
+        android:textColor="#666680"
+        android:textSize="13sp"
+        android:gravity="center"
+        android:layout_marginBottom="32dp" />
+
+    <!-- SeekBar -->
     <SeekBar
         android:id="@+id/songProgressBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp" />
+        android:progressTint="#D4537E"
+        android:thumbTint="#D4537E"
+        android:progressBackgroundTint="#2A2A3A"
+        android:layout_marginBottom="8dp" />
 
+    <!-- Time Row -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="30dp"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp">
+        android:layout_marginBottom="40dp">
 
         <TextView
             android:id="@+id/tvCurrentTime"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="00:00" />
+            android:text="00:00"
+            android:textColor="#666680"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/tvTotalTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="00:00" />
+            android:text="00:00"
+            android:textColor="#666680"
+            android:textSize="12sp" />
     </LinearLayout>
 
+    <!-- Controls Row -->
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center">
 
         <Button
             android:id="@+id/btnPrev"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
             android:text="⏮"
-            android:textSize="20sp" />
+            android:textSize="22sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#1E1E30"
+            android:padding="0dp" />
 
         <Button
             android:id="@+id/btnPlayPause"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:text="⏸"
-            android:textSize="20sp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp" />
+            android:textSize="28sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#D4537E"
+            android:padding="0dp" />
 
         <Button
             android:id="@+id/btnNext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
             android:text="⏭"
-            android:textSize="20sp" />
+            android:textSize="22sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#1E1E30"
+            android:padding="0dp" />
     </LinearLayout>
 
 </LinearLayout>

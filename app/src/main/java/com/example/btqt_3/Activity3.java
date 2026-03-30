@@ -23,7 +23,9 @@ public class Activity3 extends AppCompatActivity implements SensorEventListener 
 
     private SensorManager sensorManager;
     private Sensor accelerometer;
-    private long lastUpdate = 0;
+
+    // Biến khóa trạng thái để đảm bảo chuyển bài mượt mà bằng cách xoay ngang
+    private boolean isNeutral = true;
 
     private MediaPlayer mediaPlayer;
     private TextView tvSongName, tvCurrentTime, tvTotalTime;
@@ -92,7 +94,7 @@ public class Activity3 extends AppCompatActivity implements SensorEventListener 
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
 
-        // Thiết lập cảm biến lắc tay
+        // Thiết lập cảm biến
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         if (sensorManager != null) {
             accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -150,7 +152,6 @@ public class Activity3 extends AppCompatActivity implements SensorEventListener 
 
     // Hàm cập nhật thanh trượt liên tục
     private void updateProgressBar() {
-        // Xóa các task đang chạy trước đó để tránh đụng độ
         if (updateProgressAction != null) {
             handler.removeCallbacks(updateProgressAction);
         }
@@ -181,17 +182,37 @@ public class Activity3 extends AppCompatActivity implements SensorEventListener 
     @Override
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER && !songList.isEmpty()) {
-            long currentTime = System.currentTimeMillis();
-            if ((currentTime - lastUpdate) > 1000) {
-                float x = event.values[0];
-                if (x < -15.0f) {
+            float x = event.values[0]; // Trục X: Trái/Phải
+            float y = event.values[1]; // Trục Y: Đứng/Ngược
+            float z = event.values[2]; // Trục Z: Sấp/Ngửa (Nằm trên bàn)
+
+            // 1. Kiểm tra xem điện thoại có đang nằm bẹp trên bàn không
+            // Nếu abs(Z) > 7.5, nghĩa là máy đang ngửa mặt lên trần nhà hoặc úp xuống bàn
+            boolean isFlatOnTable = Math.abs(z) > 7.5f;
+
+            // Nếu đang nằm trên bàn thì thoát luôn, không xử lý gì cả để tránh chuyển bài sai
+            if (isFlatOnTable) {
+                return;
+            }
+
+            // 2. Nhận diện thao tác "Dựng đứng điện thoại" để MỞ KHÓA
+            // Y > 7.0 nghĩa là máy đang được cầm cầm đứng thẳng, và X nhỏ nghĩa là không bị nghiêng
+            if (y > 7.0f && Math.abs(x) < 4.0f) {
+                isNeutral = true;
+            }
+
+            // 3. Nhận diện thao tác "Xoay ngang" mượt mà (khi máy đang cầm trên tay)
+            if (isNeutral) {
+                // Tăng ngưỡng lên 7.5 để tránh quá nhạy
+                if (x < -7.5f) { // Xoay điện thoại sang ngang bên PHẢI
                     nextSong();
                     Toast.makeText(this, "Chuyển bài", Toast.LENGTH_SHORT).show();
-                    lastUpdate = currentTime;
-                } else if (x > 15.0f) {
+                    isNeutral = false; // KHÓA LẠI: Bắt buộc dựng đứng lên mới cho chuyển tiếp
+
+                } else if (x > 7.5f) { // Xoay điện thoại sang ngang bên TRÁI
                     prevSong();
                     Toast.makeText(this, "Quay lại", Toast.LENGTH_SHORT).show();
-                    lastUpdate = currentTime;
+                    isNeutral = false; // KHÓA LẠI
                 }
             }
         }
@@ -214,11 +235,11 @@ public class Activity3 extends AppCompatActivity implements SensorEventListener 
         if (sensorManager != null) {
             sensorManager.unregisterListener(this);
         }
-        // Dừng nhạc khi ẩn app và đổi nút thành Play
-        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
-            mediaPlayer.pause();
-            btnPlayPause.setText("▶");
-        }
+//        // Dừng nhạc khi ẩn app và đổi nút thành Play
+//        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+//            mediaPlayer.pause();
+//            btnPlayPause.setText("▶");
+//        }
     }
 
     @Override
