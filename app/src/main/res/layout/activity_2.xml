@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nghiêng điện thoại sang TRÁI để giảm âm lượng\n\nNghiêng sang PHẢI để tăng âm lượng"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="40dp" /> <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mức âm lượng hiện tại:"
+        android:textSize="16sp"
+        android:layout_marginBottom="12dp" />
+
+    <SeekBar
+        android:id="@+id/volumeSeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:progressTint="#009688"
+        android:thumbTint="#009688" />
+
+    <TextView
+        android:id="@+id/tvVolumePercentage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="0%"
+        android:textColor="#009688"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+</LinearLayout>
