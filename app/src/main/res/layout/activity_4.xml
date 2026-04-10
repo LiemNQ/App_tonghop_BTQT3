@@ -110,8 +110,18 @@
                     android:textColor="#FFFFFF"/>
             </LinearLayout>
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
 
+    </androidx.cardview.widget.CardView>
+    <Button
+        android:id="@+id/btnOpenAI"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:text="✨ KÍCH HOẠT ĐIỀU KHIỂN AI (GESTURE)"
+        android:backgroundTint="#FF018786"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:cornerRadius="10dp" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

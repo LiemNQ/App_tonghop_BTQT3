@@ -1,5 +1,6 @@
 package com.example.btqt_3;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -11,8 +12,8 @@ import java.net.URL;
 public class Activity4 extends AppCompatActivity {
 
     // Thay địa chỉ IP này bằng IP máy tính của bạn để test (Ví dụ: 192.168.1.5)
-    private final String SERVER_IP = "http://192.168.1.168:8080";
-
+    // private final String SERVER_IP = "http://192.168.31.100:8080";
+    private final String SERVER_IP = "http://192.168.89.246:8080";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,7 +23,14 @@ public class Activity4 extends AppCompatActivity {
         Button btnFanOff = findViewById(R.id.btnFanOff);
         Button btnTVOn = findViewById(R.id.btnTVOn);
         Button btnTVOff = findViewById(R.id.btnTVOff);
+// Trong phương thức onCreate của Activity4.java
+        Button btnOpenAI = findViewById(R.id.btnOpenAI);
 
+        btnOpenAI.setOnClickListener(v -> {
+            // Chuyển sang màn hình nhận diện cử chỉ tay
+            Intent intent = new Intent(Activity4.this, GestureActivity.class);
+            startActivity(intent);
+        });
         btnFanOn.setOnClickListener(v -> sendIoTCommand("/fan/on"));
         btnFanOff.setOnClickListener(v -> sendIoTCommand("/fan/off"));
         btnTVOn.setOnClickListener(v -> sendIoTCommand("/tv/on"));
@@ -39,7 +47,7 @@ public class Activity4 extends AppCompatActivity {
 
                 int responseCode = conn.getResponseCode();
 
-                // Hiển thị kết quả lên màn hình (phải dùng runOnUiThread)
+                // Hiển thị kết quả lên màn hình
                 runOnUiThread(() -> {
                     if (responseCode == 200) {
                         Toast.makeText(this, "Thành công!", Toast.LENGTH_SHORT).show();
