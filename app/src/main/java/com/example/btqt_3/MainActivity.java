@@ -30,6 +30,11 @@ public class MainActivity extends AppCompatActivity {
         CardView cardApp3 = findViewById(R.id.cardApp3);
         CardView cardApp4 = findViewById(R.id.cardApp4);
 
+        cardApp1.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, Activity1.class);
+            startActivity(intent);
+        });
+
         cardApp2.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, Activity2.class);
             startActivity(intent);
@@ -44,8 +49,5 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, Activity4.class);
             startActivity(intent);
         });
-        // Thêm listener cho cardApp1 và cardApp4 nếu cần
-        // cardApp1.setOnClickListener(v -> { ... });
-        // cardApp4.setOnClickListener(v -> { ... });
     }
 }
