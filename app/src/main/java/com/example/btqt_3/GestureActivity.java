@@ -41,7 +41,7 @@ public class GestureActivity extends AppCompatActivity {
     private ExecutorService cameraExecutor;
     private GestureRecognizer gestureRecognizer;
     private boolean isRecognizerReady = false;
-    private final String SERVER_IP = "http://192.168.89.246:8080";
+    private final String SERVER_IP = "http://192.168.1.168:8080";
     private String lastCommand = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
