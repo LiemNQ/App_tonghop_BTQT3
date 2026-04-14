@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera" android:required="false"/>
     <uses-feature android:name="android.hardware.camera.flash" android:required="false"/>
 
@@ -37,6 +36,7 @@
         <activity
             android:name=".GestureActivity"
             android:exported="false" />
+        <activity android:name=".Activity1" />
         <activity android:name=".Activity2" />
         <activity android:name=".Activity3" />
         <activity android:name=".Activity4" />
