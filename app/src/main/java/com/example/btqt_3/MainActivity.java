@@ -44,8 +44,6 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, Activity4.class);
             startActivity(intent);
         });
-        // Thêm listener cho cardApp1 và cardApp4 nếu cần
-        // cardApp1.setOnClickListener(v -> { ... });
-        // cardApp4.setOnClickListener(v -> { ... });
+        
     }
 }
